@@ -1,1 +1,190 @@
-# invito-compleanno
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scuola di Magia e Stregheria di Hogwarts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "EB Garamond", serif;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            perspective: 1000px;
+        }
+        .parchment {
+            background-color: #f4eedb;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(240,230,200,0.4) 100%);
+            border: 1px solid #d4c5a1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 40px 30px;
+            color: #064e3b; /* Inchiostro verde smeraldo originale */
+            position: relative;
+            min-height: 620px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .header {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(6, 78, 59, 0.2);
+            padding-bottom: 15px;
+        }
+        .sub-header {
+            font-size: 0.85rem;
+            text-transform: none;
+            font-weight: 400;
+            font-style: italic;
+            margin-top: 5px;
+            color: #1b4d3e;
+        }
+        .body-text {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+        .signature {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+        .details-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .details-list li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .details-list strong {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            width: 110px;
+            color: #043425;
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .action-btn {
+            background-color: #7a1c1c; /* Colore ceralacca */
+            color: #f4eedb;
+            border: none;
+            padding: 12px 25px;
+            font-family: "EB Garamond", serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
+        .action-btn:hover {
+            background-color: #5c1414;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- PAGINA 1: LA LETTERA -->
+    <div id="letter-page" class="parchment">
+        <div>
+            <div class="header">
+                SCUOLA DI MAGIA E STREGHERIA DI HOGWARTS
+                <div class="sub-header">
+                    Preside: Albus Silente<br>
+                    <span style="font-size: 0.75rem;">Ordine di Merlino, Prima Classe, Grande Mago, Stregone Capo, Supremo Pezzo Grosso, Confederazione Internazionale dei Maghi</span>
+                </div>
+            </div>
+            
+            <div class="body-text">
+                Cara Amica, caro Amico,
+
+                Siamo lieti di informarLa che Lei ha un posto riservato ai festeggiamenti ufficiali per il compleanno di Alessandra. 
+
+                In allegato troverà l'elenco delle indicazioni logistiche e delle attrezzature necessarie.
+
+                La celebrazione avrà luogo il giorno Sabato 1 Agosto, alle ore 18. Restiamo in attesa del Suo gufo di risposta entro e non oltre Venerdì 24 Luglio.
+            </div>
+        </div>
+
+        <div>
+            <div class="signature">
+                Con ossequi,<br><br>
+                <strong>Minerva McGranitt</strong><br>
+                <i>Vicepreside di Hogwarts</i>
+            </div>
+
+            <div class="btn-container">
+                <button class="action-btn" onclick="togglePages()">Leggi l'Allegato</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGINA 2: GLI ALLEGATI -->
+    <div id="details-page" class="parchment hidden">
+        <div>
+            <div class="header">
+                SCUOLA DI MAGIA E STREGHERIA DI HOGWARTS
+                <div class="sub-header" style="text-transform: uppercase; font-style: normal; font-weight: bold; letter-spacing: 0.5px;">
+                    Nota informativa per gli invitati
+                </div>
+            </div>
+
+            <ul class="details-list">
+                <li><strong>Data:</strong> Sabato 1 Agosto</li>
+                <li><strong>Ora:</strong> dalle ore 18.00</li>
+                <li><strong>Luogo:</strong> Via Enzo Benedetto 18, interno 1 (casa mia)</li>
+                <li><strong>Dress Code:</strong> Qualsiasi cosa che abbia a che fare con mondo di Harry Potter, anche solo vagamente. Se non ha idee, se Le fa schifo Harry Potter, se non sa nemmeno cosa sia, non esiti a chiedere! 
+                Le bacchette sono ammesse.</li>
+            </ul>
+        </div>
+
+        <div class="btn-container">
+            <button class="action-btn" style="background-color: #1b4d3e;" onclick="togglePages()">Torna alla Lettera</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePages() {
+        const letter = document.getElementById('letter-page');
+        const details = document.getElementById('details-page');
+        
+        letter.classList.toggle('hidden');
+        details.classList.toggle('hidden');
+    }
+</script>
+
+</body>
+</html>
